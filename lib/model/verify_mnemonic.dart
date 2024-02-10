@@ -34,7 +34,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
     void navigateToWalletPage() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const WalletPage()),
+        MaterialPageRoute(builder: (context) => WalletPage()),
       );
     }
 

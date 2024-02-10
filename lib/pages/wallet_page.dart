@@ -1,22 +1,57 @@
+import 'package:ezticket/components/my_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
-class WalletPage extends StatelessWidget {
-  const WalletPage({Key? key});
+class WalletIcon extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: 8.0),
+      child: Column(
+        children: [
+          IconButton(
+            icon: CircleAvatar(
+              backgroundImage: AssetImage('lib/assets/profile_image.jpg'),
+              radius: 20.0, // Adjust the radius to make the profile picture bigger
+            ),
+            onPressed: () {
+              // Add functionality when the profile picture icon is pressed
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class WalletPage extends StatefulWidget {
+  const WalletPage({super.key});
+
+  @override
+  State<WalletPage> createState() => _WalletPageState();
+}
+
+class _WalletPageState extends State<WalletPage> {
+  int _currentBottomIndex = 0;
+
+  void _handleBottomIndexChange(int? index) {
+    setState(() {
+      _currentBottomIndex = index!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true, // This makes the app bar transparent
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // Set app bar background color to transparent
-        elevation: 0, // Remove the app bar shadow
-        // Add a hamburger icon to open the drawer
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white, // Set the hamburger menu icon color to white
+                color: Colors.white,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
@@ -25,15 +60,7 @@ class WalletPage extends StatelessWidget {
           },
         ),
         actions: [
-          // Add a profile picture icon at the top right
-          IconButton(
-            icon: CircleAvatar(
-              backgroundImage: AssetImage('assets/profile_image.jpg'), // Set your profile image here
-            ),
-            onPressed: () {
-              // Add functionality when the profile picture icon is pressed
-            },
-          ),
+          WalletIcon(),
         ],
       ),
       drawer: Drawer(
@@ -60,12 +87,10 @@ class WalletPage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app, color: Colors.black), // Adjust the color if needed
+              leading: Icon(Icons.exit_to_app, color: Colors.black),
               title: Text('Logout'),
               onTap: () {
-                // Add logout logic here
-                Navigator.pop(context); // Close the drawer
-                // Perform logout actions
+                Navigator.pop(context);
               },
             ),
           ],
@@ -82,6 +107,11 @@ class WalletPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      extendBody: true,
+      bottomNavigationBar: MyBottomBar(
+        index: _currentBottomIndex,
+        onTap: _handleBottomIndexChange,
       ),
     );
   }
