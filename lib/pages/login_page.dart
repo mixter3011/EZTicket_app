@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:ezticket/model/wallet_provider.dart';
+import 'package:ezticket/pages/mnemonic_generate_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -98,6 +99,13 @@ class _LoginPageState extends State<LoginPage> {
                       print("Mnemonic: $mnemonic");
                       print("Private Key: $privateKey");
                       print("Public Key: $publicKey");
+
+                      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GenerateMnemonicPage(),
+                  ),
+                );
                       
                       setState(() {
                         isButtonPressed = true;
