@@ -24,7 +24,7 @@ class WalletIcon extends StatelessWidget {
 }
 
 class WalletPage extends StatefulWidget {
-  const WalletPage({super.key});
+  const WalletPage({Key? key}) : super(key: key);
 
   @override
   State<WalletPage> createState() => _WalletPageState();
@@ -102,8 +102,36 @@ class _WalletPageState extends State<WalletPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 81, 131, 181),
-              Color.fromARGB(255, 90, 83, 132),
+              Color.fromARGB(255, 34, 35, 60),
+              Color.fromARGB(255, 60, 42, 105),
+            ],
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 100, left: 314),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.account_balance_wallet,
+                      color: Color.fromARGB(255, 99, 245, 236),
+                      size: 20,
+                    ),
+                    SizedBox(width: 5),
+                    Text(
+                      '10 ETH',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 99, 245, 236),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
