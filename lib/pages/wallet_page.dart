@@ -112,23 +112,87 @@ class _WalletPageState extends State<WalletPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 100, left: 314),
-                child: Row(
+                margin: EdgeInsets.only(top: 100, left: 20, right: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
-                      Icons.account_balance_wallet,
-                      color: Color.fromARGB(255, 99, 245, 236),
-                      size: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return LinearGradient(
+                              colors: [
+                                Color.fromARGB(255, 229, 140, 235),
+                                Color.fromARGB(255, 33, 148, 146),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ).createShader(bounds);
+                          },
+                          child: Text(
+                            'Explore',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.account_balance_wallet,
+                              color: Color.fromARGB(255, 150, 129, 212),
+                              size: 30,
+                            ),
+                            SizedBox(width: 5),
+                            Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '5.2',
+                                    style: TextStyle(
+                                      foreground: Paint()
+                                        ..shader = LinearGradient(
+                                          colors: [
+                                            Color.fromARGB(255, 105, 255, 233),
+                                            Color.fromARGB(255, 38, 165, 211),
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: '  ',
+                                  ),
+                                  TextSpan(
+                                    text: 'ETH',
+                                    style: TextStyle(
+                                      foreground: Paint()
+                                        ..shader = LinearGradient(
+                                          colors: [
+                                            Color.fromARGB(255, 255, 125, 166),
+                                            Color.fromARGB(255, 235, 101, 228),
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 5),
-                    Text(
-                      '10 ETH',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 99, 245, 236),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    SizedBox(height: 10),
                   ],
                 ),
               ),
