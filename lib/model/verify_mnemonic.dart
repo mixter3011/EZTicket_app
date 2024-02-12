@@ -34,13 +34,13 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
     void navigateToWalletPage() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => WalletPage()),
+        MaterialPageRoute(builder: (context) => const WalletPage()),
       );
     }
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/assets/wave.png'), // Replace with your image path
             fit: BoxFit.cover,
@@ -52,7 +52,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
+              const Text(
                 'Please verify your mnemonic phrase:',
                 style: TextStyle(fontSize: 22.0, color: Colors.white, fontWeight: FontWeight.bold),
               ),
@@ -63,8 +63,8 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                     verificationText = value;
                   });
                 },
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   labelText: 'Enter mnemonic phrase',
                   labelStyle: TextStyle(color: Colors.white),
                 ),
@@ -83,8 +83,8 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  side: BorderSide(color: Color.fromARGB(0, 44, 19, 19)),
-                  primary: Color.fromARGB(0, 169, 25, 25),
+                  side: const BorderSide(color: Color.fromARGB(0, 44, 19, 19)),
+                  primary: const Color.fromARGB(0, 169, 25, 25),
                 ),
                 child: Container(
                   padding: const EdgeInsets.all(10.0),
