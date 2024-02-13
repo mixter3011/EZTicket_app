@@ -13,7 +13,7 @@ class GlassBox extends StatelessWidget {
         height: 62,
         padding: const EdgeInsets.all(2),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 2),
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
           child: Container(
             alignment: Alignment.bottomCenter,
             child: child,

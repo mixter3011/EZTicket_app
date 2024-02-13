@@ -121,148 +121,195 @@ class _WalletPageState extends State<WalletPage> {
           ],
         ),
       ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'lib/assets/wave.png', // Replace 'lib/assets/bg.png' with the actual path to your background image
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/wave.png'),
             fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
           ),
-          Container(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 80, left: 20, right: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return const LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(255, 229, 140, 235),
-                                    Color.fromARGB(255, 33, 148, 146),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: const Text(
-                                'Explore',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 40,
-                                  color: Colors.white,
-                                ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 80, left: 20, right: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 229, 140, 235),
+                                  Color.fromARGB(255, 33, 148, 146),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child: const Text(
+                              'Explore',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 40,
+                                color: Colors.white,
                               ),
                             ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.account_balance_wallet,
-                                  color: Color.fromARGB(255, 150, 129, 212),
-                                  size: 30,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.account_balance_wallet,
+                                color: Color.fromARGB(255, 150, 129, 212),
+                                size: 30,
+                              ),
+                              const SizedBox(width: 5),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: '5.2',
+                                      style: TextStyle(
+                                        foreground: Paint()
+                                          ..shader = const LinearGradient(
+                                            colors: [
+                                              Color.fromARGB(255, 105, 255, 233),
+                                              Color.fromARGB(255, 38, 165, 211),
+                                            ],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                          ).createShader(const Rect.fromLTWH(
+                                              0.0, 0.0, 200.0, 70.0)),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const TextSpan(
+                                      text: '  ',
+                                    ),
+                                    TextSpan(
+                                      text: 'ETH',
+                                      style: TextStyle(
+                                        foreground: Paint()
+                                          ..shader = const LinearGradient(
+                                            colors: [
+                                              Color.fromARGB(255, 255, 125, 166),
+                                              Color.fromARGB(255, 235, 101, 228),
+                                            ],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                          ).createShader(const Rect.fromLTWH(
+                                              0.0, 0.0, 200.0, 70.0)),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(width: 5),
-                                Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: '5.2',
-                                        style: TextStyle(
-                                          foreground: Paint()
-                                            ..shader = const LinearGradient(
-                                              colors: [
-                                                Color.fromARGB(255, 105, 255, 233),
-                                                Color.fromARGB(255, 38, 165, 211),
-                                              ],
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                            ).createShader(const Rect.fromLTWH(
-                                                0.0, 0.0, 200.0, 70.0)),
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                      // Square Carousel with 5 transparent items and glass effect
+                      SizedBox(
+                        height: 400,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            aspectRatio: 1.0,
+                            enlargeCenterPage: true,
+                            autoPlay: true,
+                          ),
+                          items: [
+                            _buildGlassEffectImage('lib/assets/conference.jpg'),
+                            _buildGlassEffectImage('lib/assets/fair.png'),
+                            _buildGlassEffectImage('lib/assets/makeathon.jpg'),
+                            _buildGlassEffectImage('lib/assets/meetup.jpeg'),
+                            _buildGlassEffectImage('lib/assets/tech_talk.jpg'),
+                            // Add more items as needed
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      ShaderMask(
+                        shaderCallback: (Rect bounds) {
+                          return const LinearGradient(
+                            colors: [
+                              Color.fromARGB(255, 229, 140, 235),
+                              Color.fromARGB(255, 33, 148, 146),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ).createShader(bounds);
+                        },
+                        child: const Text(
+                          "Get Tickets",
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Column(
+                        children: List.generate(
+                          5,
+                          (index) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 120,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                  ),
+                                  child: _buildTicketItem(index),
+                                ),
+                                Positioned.fill(
+                                  child: Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          // Add functionality when "Book Now" button is pressed
+                                          // You can navigate to a booking page or perform any other action
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Color.fromARGB(255, 224, 153, 249), // Set your desired color here
+                                        ),
+                                        child: Text(
+                                          'Book Now',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
-                                      const TextSpan(
-                                        text: '  ',
-                                      ),
-                                      TextSpan(
-                                        text: 'ETH',
-                                        style: TextStyle(
-                                          foreground: Paint()
-                                            ..shader = const LinearGradient(
-                                              colors: [
-                                                Color.fromARGB(255, 255, 125, 166),
-                                                Color.fromARGB(255, 235, 101, 228),
-                                              ],
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                            ).createShader(const Rect.fromLTWH(
-                                                0.0, 0.0, 200.0, 70.0)),
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 30),
-                        // Square Carousel with 5 transparent items and glass effect
-                        SizedBox(
-                          height: 400,
-                          child: CarouselSlider(
-                            options: CarouselOptions(
-                              aspectRatio: 1.0,
-                              enlargeCenterPage: true,
-                              autoPlay: true,
-                            ),
-                            items: [
-                              _buildGlassEffectImage('lib/assets/conference.jpg'),
-                              _buildGlassEffectImage('lib/assets/fair.png'),
-                              _buildGlassEffectImage('lib/assets/makeathon.jpg'),
-                              _buildGlassEffectImage('lib/assets/meetup.jpeg'),
-                              _buildGlassEffectImage('lib/assets/tech_talk.jpg'),
-                              // Add more items as needed
-                            ],
                           ),
                         ),
-                        SizedBox(
-                          height: 100,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: List.generate(
-                              5,
-                              (index) => Container(
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(),
-                      ],
-                    ),
+                      ),
+                      Container(),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
       extendBody: true,
       bottomNavigationBar: GlassBox(
@@ -296,6 +343,37 @@ class _WalletPageState extends State<WalletPage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTicketItem(int index) {
+    String imagePath;
+    switch (index) {
+      case 0:
+        imagePath = 'lib/assets/conference_ticekt.jpg';
+        break;
+      case 1:
+        imagePath = 'lib/assets/fair_ticket.jpg';
+        break;
+      case 2:
+        imagePath = 'lib/assets/hackathon_ticket.jpeg';
+        break;
+      case 3:
+        imagePath = 'lib/assets/marketing_event_ticket.jpg';
+        break;
+      case 4:
+        imagePath = 'lib/assets/tech_talk_ticket.png';
+        break;
+      default:
+        imagePath = '';
+    }
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
       ),
     );
   }
