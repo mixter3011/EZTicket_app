@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ezticket/components/my_bottom_bar.dart';
+import 'package:ezticket/pages/payment_page.dart';
 import 'package:ezticket/themes/glassbox.dart';
 import 'package:flutter/material.dart';
 
@@ -277,20 +278,23 @@ class _WalletPageState extends State<WalletPage> {
                                   child: Align(
                                     alignment: Alignment.bottomCenter,
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.only(left: 200.0, bottom: 10.0),
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          // Add functionality when "Book Now" button is pressed
-                                          // You can navigate to a booking page or perform any other action
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const Payment()),
+                                          );
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: Color.fromARGB(255, 144, 99, 240), // Set your desired color here
+                                          primary: const Color.fromARGB(150, 144, 99, 240), // Set your desired color here
                                         ),
                                         child: const Text(
-                                          'Book Now',
+                                          'Book Now : 2 ETH',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
+                                            
                                           ),
                                         ),
                                       ),
