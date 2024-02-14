@@ -284,9 +284,9 @@ class _WalletPageState extends State<WalletPage> {
                                           // You can navigate to a booking page or perform any other action
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: Color.fromARGB(255, 224, 153, 249), // Set your desired color here
+                                          primary: Color.fromARGB(255, 144, 99, 240), // Set your desired color here
                                         ),
-                                        child: Text(
+                                        child: const Text(
                                           'Book Now',
                                           style: TextStyle(
                                             color: Colors.white,
