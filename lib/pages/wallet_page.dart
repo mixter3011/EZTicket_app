@@ -2,7 +2,10 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ezticket/components/my_bottom_bar.dart';
+import 'package:ezticket/pages/login_page.dart';
 import 'package:ezticket/pages/payment_page.dart';
+import 'package:ezticket/pages/transaction_history.dart';
+import 'package:ezticket/pages/user_tickets.dart';
 import 'package:ezticket/themes/glassbox.dart';
 import 'package:flutter/material.dart';
 
@@ -111,14 +114,15 @@ class _WalletPageState extends State<WalletPage> {
                 child: Image.asset('lib/assets/Seatlabnft.png'),
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.only(top: 100.0, left: 15.0),
               child: ListTile(
                 leading: const Icon(Icons.exit_to_app, color: Color.fromARGB(255, 255, 255, 255)),
                 title: const Text('L  O G O U T', style: TextStyle(fontSize: 18, color:Colors.white)), 
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
                 },
               ),
             ),
@@ -128,7 +132,9 @@ class _WalletPageState extends State<WalletPage> {
                 leading: const Icon(Icons.confirmation_num_outlined, color: Color.fromARGB(255, 255, 255, 255)),
                 title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color:Colors.white)), 
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => const UserTickets()));
                 },
               ),
             ),
@@ -138,7 +144,9 @@ class _WalletPageState extends State<WalletPage> {
                 leading: const Icon(Icons.add_card_outlined, color: Color.fromARGB(255, 255, 255, 255)),
                 title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color:Colors.white)),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => const TransactionHistory()));
                 },
               ),
             ),
@@ -292,7 +300,7 @@ class _WalletPageState extends State<WalletPage> {
                                 Container(
                                   height: 120,
                                   width: double.infinity,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.transparent,
                                   ),
                                   child: _buildTicketItem(index),
