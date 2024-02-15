@@ -90,40 +90,63 @@ class _WalletPageState extends State<WalletPage> {
         ],
       ),
       drawer: Drawer(
+        backgroundColor: Colors.white.withOpacity(0.6),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color.fromARGB(255, 81, 131, 181),
-                    Color.fromARGB(255, 90, 83, 132),
+                    Colors.white.withOpacity(0.1),
+                    Colors.white.withOpacity(0.1),
                   ],
                 ),
+                border: const Border(bottom: BorderSide.none),
               ),
-              child: Text(
-                'User Name',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom:15.0),
+                child: Image.asset('lib/assets/Seatlabnft.png'),
               ),
             ),
-            ListTile(
-              leading: const Icon(Icons.exit_to_app, color: Colors.black),
-              title: const Text('Logout'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            
+            Padding(
+              padding: const EdgeInsets.only(top: 100.0, left: 15.0),
+              child: ListTile(
+                leading: const Icon(Icons.exit_to_app, color: Color.fromARGB(255, 255, 255, 255)),
+                title: const Text('L  O G O U T', style: TextStyle(fontSize: 18, color:Colors.white)), 
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 15.0),
+              child: ListTile(
+                leading: const Icon(Icons.confirmation_num_outlined, color: Color.fromARGB(255, 255, 255, 255)),
+                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color:Colors.white)), 
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 15.0),
+              child: ListTile(
+                leading: const Icon(Icons.add_card_outlined, color: Color.fromARGB(255, 255, 255, 255)),
+                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color:Colors.white)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
           ],
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/assets/wave.png'),
             fit: BoxFit.cover,

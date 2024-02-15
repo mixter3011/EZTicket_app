@@ -13,12 +13,12 @@ class Confirmation extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center, // Align text and button vertically
               children: [
-                Text(
-                  "    Congrats on your Transaction!\n " "Your Ticket has been sent to your \n" "                        Email",
+                const Text(
+                  "    Your Transaction was Succesful!\n " "Your Ticket has been sent to your \n" "                        Wallet",
                   style: TextStyle(
                     fontSize: 24, // Adjust font size as needed
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(190, 0, 0, 0), // Ensure text is visible on background
+                    color: Color.fromARGB(190, 0, 0, 0), // Ensure text is visible on background
                   ),
                 ),
                 const SizedBox(height: 50), // Add some spacing between text and button
@@ -27,10 +27,10 @@ class Confirmation extends StatelessWidget {
                     // Handle button press (e.g., navigate to home page)
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => WalletPage()),
+                      MaterialPageRoute(builder: (context) => const WalletPage()),
                     ); // Assuming home page is the previous screen
                   },
-                  child: Text('Return to Home Page'),
+                  child: const Text('Return to Home Page'),
                 ),
               ],
             ),
