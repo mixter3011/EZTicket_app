@@ -1,3 +1,4 @@
+import 'package:ezticket/components/transaction_history.dart';
 import 'package:flutter/material.dart';
 
 class TransactionHistory extends StatelessWidget {
@@ -24,6 +25,16 @@ class TransactionHistory extends StatelessWidget {
           ),
         ],
         title: const Text('Transaction History'),
+      ),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TransactionItem(
+            sender: 'Fobic',
+            receiver: 'Fobic',
+            amount: 'ETH val: 2.0',
+          )
+        ],
       ),
     );
   }

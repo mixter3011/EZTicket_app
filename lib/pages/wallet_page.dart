@@ -6,6 +6,7 @@ import 'package:ezticket/pages/login_page.dart';
 import 'package:ezticket/pages/payment_page.dart';
 import 'package:ezticket/pages/transaction_history.dart';
 import 'package:ezticket/pages/user_tickets.dart';
+import 'package:ezticket/pages/why_us.dart';
 import 'package:ezticket/themes/glassbox.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +98,7 @@ class _WalletPageState extends State<WalletPage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -110,7 +111,7 @@ class _WalletPageState extends State<WalletPage> {
                 border: const Border(bottom: BorderSide.none),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(bottom:15.0),
+                padding: const EdgeInsets.only(bottom: 15.0),
                 child: Image.asset('lib/assets/Seatlabnft.png'),
               ),
             ),
@@ -118,11 +119,12 @@ class _WalletPageState extends State<WalletPage> {
               padding: const EdgeInsets.only(top: 100.0, left: 15.0),
               child: ListTile(
                 leading: const Icon(Icons.exit_to_app, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('L O G O U T', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))), 
+                title: const Text('L O G O U T', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
                 onTap: () {
                   Navigator.push(
-                    context, 
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
                 },
               ),
             ),
@@ -130,11 +132,12 @@ class _WalletPageState extends State<WalletPage> {
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
                 leading: const Icon(Icons.confirmation_num_outlined, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))), 
+                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
                 onTap: () {
                   Navigator.push(
-                    context, 
-                    MaterialPageRoute(builder: (context) => const UserTickets()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const UserTickets()),
+                  );
                 },
               ),
             ),
@@ -142,11 +145,12 @@ class _WalletPageState extends State<WalletPage> {
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
                 leading: const Icon(Icons.add_card_outlined, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))),
+                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
                 onTap: () {
                   Navigator.push(
-                    context, 
-                    MaterialPageRoute(builder: (context) => const TransactionHistory()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const TransactionHistory()),
+                  );
                 },
               ),
             ),
@@ -154,11 +158,12 @@ class _WalletPageState extends State<WalletPage> {
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
                 leading: const Icon(Icons.account_tree_outlined, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('W H Y   U S  ?', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))),
+                title: const Text('W H Y   U S ', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
                 onTap: () {
                   Navigator.push(
-                    context, 
-                    MaterialPageRoute(builder: (context) => const TransactionHistory()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const WhyUs()),
+                  );
                 },
               ),
             ),
@@ -330,14 +335,14 @@ class _WalletPageState extends State<WalletPage> {
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: const Color.fromARGB(150, 144, 99, 240), // Set your desired color here
+                                          primary: const Color.fromARGB(150, 144, 99, 240),
+                                          // Set your desired color here
                                         ),
                                         child: const Text(
                                           'Book Now : 2 ETH',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
-                                            
                                           ),
                                         ),
                                       ),
@@ -364,6 +369,13 @@ class _WalletPageState extends State<WalletPage> {
           index: _currentBottomIndex,
           onTap: _handleBottomIndexChange,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showAssistanceDialog(context);
+        },
+        tooltip: 'Chatbot',
+        child: Icon(Icons.chat),
       ),
     );
   }
@@ -422,6 +434,75 @@ class _WalletPageState extends State<WalletPage> {
         imagePath,
         fit: BoxFit.cover,
       ),
+    );
+  }
+
+  // Function to show assistance dialog
+  void _showAssistanceDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ChatBotDialog();
+      },
+    );
+  }
+}
+
+class ChatBotDialog extends StatefulWidget {
+  @override
+  _ChatBotDialogState createState() => _ChatBotDialogState();
+}
+
+class _ChatBotDialogState extends State<ChatBotDialog> {
+  TextEditingController _textFieldController = TextEditingController();
+  String botResponse = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('How may I assist you?'),
+      content: Column(
+        children: [
+          TextField(
+            controller: _textFieldController,
+            decoration: InputDecoration(labelText: 'Your question or request'),
+          ),
+          SizedBox(height: 10),
+          if (botResponse.isNotEmpty)
+            Text(
+              'Bot: $botResponse',
+              style: TextStyle(
+                color: Colors.green,  // Adjust the color as needed
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text('Cancel'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // Process the user's input
+            String userQuery = _textFieldController.text;
+            // You can handle user input and provide the bot's response here
+
+            // For now, we'll just print the bot's response
+            setState(() {
+              botResponse =
+                  "A blockchain is a decentralized, distributed and public digital ledger that is used to record transactions across many computers so that the record cannot be altered retroactively without the alteration of all subsequent blocks and the consensus of the network.";
+            });
+
+            // Close the dialog
+            // Navigator.of(context).pop();
+          },
+          child: Text('Submit'),
+        ),
+      ],
     );
   }
 }
