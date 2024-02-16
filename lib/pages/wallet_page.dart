@@ -93,7 +93,7 @@ class _WalletPageState extends State<WalletPage> {
         ],
       ),
       drawer: Drawer(
-        backgroundColor: Colors.white.withOpacity(0.6),
+        backgroundColor: Colors.white.withOpacity(0.8),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -103,8 +103,8 @@ class _WalletPageState extends State<WalletPage> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.white.withOpacity(0.1),
-                    Colors.white.withOpacity(0.1),
+                    Colors.grey.withOpacity(0.5),
+                    Colors.grey.withOpacity(0.1),
                   ],
                 ),
                 border: const Border(bottom: BorderSide.none),
@@ -117,8 +117,8 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 100.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.exit_to_app, color: Color.fromARGB(255, 255, 255, 255)),
-                title: const Text('L  O G O U T', style: TextStyle(fontSize: 18, color:Colors.white)), 
+                leading: const Icon(Icons.exit_to_app, color: Color.fromARGB(255, 0, 0, 0)),
+                title: const Text('L O G O U T', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))), 
                 onTap: () {
                   Navigator.push(
                     context, 
@@ -129,8 +129,8 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.confirmation_num_outlined, color: Color.fromARGB(255, 255, 255, 255)),
-                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color:Colors.white)), 
+                leading: const Icon(Icons.confirmation_num_outlined, color: Color.fromARGB(255, 0, 0, 0)),
+                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))), 
                 onTap: () {
                   Navigator.push(
                     context, 
@@ -141,8 +141,20 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.add_card_outlined, color: Color.fromARGB(255, 255, 255, 255)),
-                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color:Colors.white)),
+                leading: const Icon(Icons.add_card_outlined, color: Color.fromARGB(255, 0, 0, 0)),
+                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))),
+                onTap: () {
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => const TransactionHistory()));
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 15.0),
+              child: ListTile(
+                leading: const Icon(Icons.account_tree_outlined, color: Color.fromARGB(255, 0, 0, 0)),
+                title: const Text('W H Y   U S  ?', style: TextStyle(fontSize: 18, color:Color.fromARGB(255, 0, 0, 0))),
                 onTap: () {
                   Navigator.push(
                     context, 

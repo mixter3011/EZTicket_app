@@ -2,7 +2,31 @@ import 'package:ezticket/pages/wallet_page.dart';
 import 'package:flutter/material.dart';
 
 class UserTickets extends StatelessWidget {
-  const UserTickets({Key? key});
+  const UserTickets({super.key});
+
+  void _showTiektDetails(BuildContext context, String eventname, String date, String chainId, String address){
+    showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(eventname),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('DATE: $date'),
+            Text('CHAIN ID: $chainId'),
+            Text('ADDRESS: $address'),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () {
+            Navigator.of(context).pop();
+          }, child: const Text("Close"),
+         ),
+        ],
+      );
+    },
+   );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +42,19 @@ class UserTickets extends StatelessWidget {
             );
           },
         ),
+        actions: [
+          Padding(padding: const EdgeInsets.only(top: 20.0, right: 20.0),
+          child: GestureDetector(
+            onTap: () {},
+            child: Image.asset(
+              'lib/assets/pic.png',
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
+          ),
+         ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -28,10 +65,10 @@ class UserTickets extends StatelessWidget {
               children: [
                 ClipOval(
                   child: Image.asset(
-                    'lib/assets/profile_image.jpg', // Replace with the actual path to your image
-                    width: 200, // Adjust width as needed
-                    height: 200, // Adjust height as needed
-                    fit: BoxFit.cover, // Choose an appropriate BoxFit
+                    'lib/assets/profile_image.jpg', 
+                    width: 200, 
+                    height: 200, 
+                    fit: BoxFit.cover, 
                   ),
                 ),
                 const SizedBox(height: 20.0),
@@ -64,71 +101,80 @@ class UserTickets extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white, // Set a default color for unsupported devices
+                      color: Colors.white, 
                     ),
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                Container(
-                  height: 140.0,
-                  width: 380.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+                GestureDetector(
+                  onTap: () {
+                    _showTiektDetails(
+                      context, 
+                      'CXR CONFERENCE 2024', 
+                      'FEB 10 2024', 
+                      '7691053', 
+                      'n2tkvzz********WKNHozw');
+                  },
+                  child: Container(
+                    height: 140.0,
+                    width: 380.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top:10.0),
-                    child: Text(
-                      "  EVENT NAME: CAAR CONFERENCE 2024 \n  DATE: FEB 10 2024 \n  CHAIN ID: 7691053 \n ADDRESS:1FfmbHfnpaZjKFvyi1okTjJJusN4\n 55paPH",
-                      style: TextStyle(
-                        fontSize: 18, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 40.0),
-                Container(
-                  height: 140.0,
-                  width: 380.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      "  EVENT_NAME: ANNUAL_CAREER_FAIR \n  DATE: AUGUST_10_2024 \n  CHAIN_ID: 35895347 \n ADDRESS: n2tkvzzE1T2ZkkBiVVCnrrAEQcu\n WKNHozw",
-                      style: TextStyle(
-                        fontSize: 18, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Image.asset(
+                      'lib/assets/ticket.png',
+                      width: 500,
+                      height: 500,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 const SizedBox(height: 40.0),
-                Container(
-                  height: 140.0,
-                  width: 380.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+                GestureDetector(
+                  onTap: () {
+                    _showTiektDetails(
+                      context, 
+                      'ANNUAL_CAREER_FAIR', 
+                      'AUGUST_10_2024', 
+                      '35895347', 
+                      'n2tkvzz********WKNHozw');
+                  },
+                  child: Container(
+                    height: 140.0,
+                    width: 380.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      'lib/assets/ticket.png',
+                      width: 500,
+                      height: 500,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      "  EVENT NAME: HACKATHON X MULTIVERSE \n  DATE: NOVEMBER 19 2024 \n  CHAIN ID: 27249460 \n ADDRESS:mkm9VcS5orY4gtKLVcQsxAy9jXC\n 3zpBxoL",
-                      style: TextStyle(
-                        fontSize: 18, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                      ),
+                ),
+                const SizedBox(height: 40.0),
+                GestureDetector(
+                  onTap: () {
+                    _showTiektDetails(
+                      context, 
+                      'HACKATHON X MULTIVERSE', 
+                      'NOVEMBER 19 2024', 
+                      '27249460', 
+                      'mkm9VcS5*******3zpBxoL');
+                  },
+                  child: Container(
+                    height: 140.0,
+                    width: 380.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
+                    child: Image.asset(
+                      'lib/assets/ticket.png',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    ),    
                   ),
                 ),
               ],
