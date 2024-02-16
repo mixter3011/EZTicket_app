@@ -457,6 +457,26 @@ class _ChatBotDialogState extends State<ChatBotDialog> {
   TextEditingController _textFieldController = TextEditingController();
   String botResponse = '';
 
+  // Define a map to store predefined responses for specific queries
+  final Map<String, String> predefinedResponses = {
+    'What is NFT': 'NFT means non-fungible tokens (NFTs), which are generally created using the same type of programming used for cryptocurrencies. In simple terms, these cryptographic assets are based on blockchain technology. They cannot be exchanged or traded equivalently like other cryptographic assets.',
+    'What is blockchain': 'A blockchain is a decentralized, distributed and public digital ledger that is used to record transactions across many computers so that the record cannot be altered retroactively without the alteration of all subsequent blocks and the consensus of the network.',
+    // Add more predefined responses as needed
+  };
+
+  void _handleSubmission() {
+    // Process the user's input
+    String userQuery = _textFieldController.text;
+    
+    // Look for predefined responses
+    String response = predefinedResponses[userQuery] ?? 'I am not sure how to respond to that.';
+
+    // Update the botResponse state to display the response
+    setState(() {
+      botResponse = response;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -486,20 +506,7 @@ class _ChatBotDialogState extends State<ChatBotDialog> {
           child: Text('Cancel'),
         ),
         ElevatedButton(
-          onPressed: () {
-            // Process the user's input
-            String userQuery = _textFieldController.text;
-            // You can handle user input and provide the bot's response here
-
-            // For now, we'll just print the bot's response
-            setState(() {
-              botResponse =
-                  "A blockchain is a decentralized, distributed and public digital ledger that is used to record transactions across many computers so that the record cannot be altered retroactively without the alteration of all subsequent blocks and the consensus of the network.";
-            });
-
-            // Close the dialog
-            // Navigator.of(context).pop();
-          },
+          onPressed: _handleSubmission,
           child: Text('Submit'),
         ),
       ],
