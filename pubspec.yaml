@@ -46,6 +46,7 @@ dependencies:
   video_player: ^2.8.2
   flutter_slidable: ^3.0.1
   slide_to_act: ^2.0.2
+  chewie: ^1.7.5
 
 dev_dependencies:
   flutter_test:

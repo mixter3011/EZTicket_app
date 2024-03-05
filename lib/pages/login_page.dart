@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, body_might_complete_normally_nullable
+
 import 'dart:async';
 import 'package:ezticket/model/wallet_provider.dart';
 import 'package:ezticket/pages/mnemonic_generate_page.dart';

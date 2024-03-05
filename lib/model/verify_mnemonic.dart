@@ -34,7 +34,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
     void navigateToWalletPage() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => WalletPage()),
+        MaterialPageRoute(builder: (context) => const WalletPage()),
       );
     }
 
@@ -42,7 +42,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/assets/wave.png'), // Replace with your image path
+            image: AssetImage('lib/assets/Green iPhone 13 Wallpaper 1.png'), // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
@@ -54,7 +54,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
             children: [
               const Text(
                 'Please verify your mnemonic phrase:',
-                style: TextStyle(fontSize: 22.0, color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold, fontFamily: 'Poppins'),
               ),
               const SizedBox(height: 40.0),
               TextField(
@@ -66,7 +66,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                 style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   labelText: 'Enter mnemonic phrase',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
                 ),
               ),
               const SizedBox(height: 50.0),
@@ -74,7 +74,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                 onPressed: () {
                   verifyMnemonic();
                 },
-                child: const Text('Verify', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
+                child: const Text('Verify', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontFamily: 'Poppins')),
               ),
               const SizedBox(height: 24.0),
               ElevatedButton(
