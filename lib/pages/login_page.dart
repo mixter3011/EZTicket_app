@@ -1,42 +1,94 @@
-import 'dart:ui';
+import 'dart:async';
 import 'package:ezticket/model/wallet_provider.dart';
 import 'package:ezticket/pages/mnemonic_generate_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:slide_to_act/slide_to_act.dart';
+import 'package:video_player/video_player.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Color buttonColor = Colors.transparent; // Initial color
-  bool isButtonPressed = false; // Track if the button is pressed
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+  bool isButtonPressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = VideoPlayerController.asset('lib/assets/dynamic.mp4')
+      ..initialize().then((_) {
+        setState(() {});
+        _controller.play();
+        _controller.setLooping(true);
+      });
+
+    _initializeVideoPlayerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final walletProvider = Provider.of<WalletProvider>(context);
+
     return Scaffold(
       body: Stack(
         children: [
-          // Background wave image with translucency
           Positioned.fill(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-              child: Image.asset(
-                'lib/assets/wave.png',
-                fit: BoxFit.cover,
-              ),
+            child: FutureBuilder(
+              future: _initializeVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return VideoPlayer(_controller);
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           ),
-          // Content (Seatlabnft image and Create Wallet button)
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Seatlabnft image
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: const TextSpan(
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Welcome to EZ Ticket",
+                            style: TextStyle(fontSize: 35, fontFamily: 'Poppins'),
+                          ),
+                          TextSpan(
+                            text: " Your One-stop solution to all Event Needs !",
+                            style: TextStyle(fontSize: 35, fontFamily: 'Poppins')
+                          )
+                        ], 
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10), // Adjust the height as needed
                 ColorFiltered(
                   colorFilter: ColorFilter.mode(
                     Colors.white.withOpacity(0.7),
@@ -49,90 +101,27 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                const SizedBox(height: 30),
-
-                // Welcome Text
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: const TextSpan(
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "Welcome to ",
-                          ),
-                          TextSpan(
-                            text: "EZTicket",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 224, 142, 205),
-                            ),
-                          ),
-                          TextSpan(
-                            text: " A One Stop Destination for all your Event needs",
-                          ),
-                        ],
-                      ),
+                const SizedBox(height: 120), // Adjust the height as needed
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SlideAction(
+                    borderRadius: 30,
+                    elevation: 0,
+                    innerColor: Colors.grey[600],
+                    outerColor: Colors.green.withOpacity(0.2),
+                    sliderButtonIcon: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: Colors.white,
                     ),
-                  ),
-                ),
-
-                const SizedBox(height: 40),
-
-                // Create Wallet button
-                GlowingOverscrollIndicator(
-                  color: isButtonPressed ? Color.fromARGB(255, 225, 150, 175) : Colors.transparent,
-                  showLeading: false,
-                  showTrailing: false,
-                  axisDirection: AxisDirection.down,
-                  child: InkWell(
-                    onTap: () async {
-                      final mnemonic = walletProvider.generateMnemonic();
-                      final privateKey = await walletProvider.getPrivateKey(mnemonic);
-                      final publicKey = await walletProvider.getPublicKey(privateKey);
-
-                      print("Mnemonic: $mnemonic");
-                      print("Private Key: $privateKey");
-                      print("Public Key: $publicKey");
-
+                    text: "Create Wallet",
+                    onSubmit: () {
                       Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const GenerateMnemonicPage(),
-                  ),
-                );
-                      
-                      setState(() {
-                        isButtonPressed = true;
-                      });
-
-                      // Delay to see the glow effect
-                      Future.delayed(Duration(milliseconds: 300), () {
-                        setState(() {
-                          isButtonPressed = false;
-                        });
-                      });
+                        context,
+                        MaterialPageRoute(builder: (context) => const GenerateMnemonicPage()),
+                      );
                     },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 16),
-                      decoration: BoxDecoration(
-                        color: isButtonPressed ? const Color.fromARGB(255, 214, 139, 164) : buttonColor,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.white),
-                      ),
-                      child: const Text(
-                        "Create Wallet",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ),
                   ),
-                ),
+                )
               ],
             ),
           ),

@@ -43,6 +43,9 @@ dependencies:
   provider: ^6.1.1
   shared_preferences: ^2.2.2
   carousel_slider: ^4.2.1
+  video_player: ^2.8.2
+  flutter_slidable: ^3.0.1
+  slide_to_act: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -82,12 +85,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: lib/fonts/Poppins-Regular.ttf
+        - asset: lib/fonts/Poppins-Italic.ttf
+          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
