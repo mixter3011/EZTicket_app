@@ -23,7 +23,6 @@ class WalletIcon extends StatelessWidget {
               radius: 20.0,
             ),
             onPressed: () {
-              // Add functionality when the profile picture icon is pressed
             },
           ),
         ],
@@ -69,27 +68,6 @@ class _WalletPageState extends State<WalletPage> {
           },
         ),
         actions: [
-          Container(
-            margin: const EdgeInsets.only(left: 30, right: 1.0),
-            width: 290,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: const Color.fromARGB(80, 235, 191, 255),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 240.0),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.black,
-                ),
-                onPressed: () {
-                  // Add functionality when the search icon is pressed
-                },
-              ),
-            ),
-          ),
           WalletIcon(),
         ],
       ),
@@ -118,8 +96,8 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 100.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.exit_to_app, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('L O G O U T', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
+                leading: const Icon(Icons.exit_to_app, color: Colors.black), // Change text color to black
+                title: const Text('L O G O U T', style: TextStyle(fontSize: 18, color: Colors.black)), // Change text color to black
                 onTap: () {
                   Navigator.push(
                     context,
@@ -131,8 +109,8 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.confirmation_num_outlined, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
+                leading: const Icon(Icons.confirmation_num_outlined, color: Colors.black), // Change text color to black
+                title: const Text('Y O U R  T I C K E T S', style: TextStyle(fontSize: 18, color: Colors.black)), // Change text color to black
                 onTap: () {
                   Navigator.push(
                     context,
@@ -144,8 +122,8 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.add_card_outlined, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
+                leading: const Icon(Icons.add_card_outlined, color: Colors.black), // Change text color to black
+                title: const Text('T R A N S A C T I O N', style: TextStyle(fontSize: 18, color: Colors.black)), // Change text color to black
                 onTap: () {
                   Navigator.push(
                     context,
@@ -157,8 +135,8 @@ class _WalletPageState extends State<WalletPage> {
             Padding(
               padding: const EdgeInsets.only(top: 15.0, left: 15.0),
               child: ListTile(
-                leading: const Icon(Icons.account_tree_outlined, color: Color.fromARGB(255, 0, 0, 0)),
-                title: const Text('W H Y   U S ', style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0))),
+                leading: const Icon(Icons.account_tree_outlined, color: Colors.black), // Change text color to black
+                title: const Text('W H Y   U S ', style: TextStyle(fontSize: 18, color: Colors.black)), // Change text color to black
                 onTap: () {
                   Navigator.push(
                     context,
@@ -183,75 +161,46 @@ class _WalletPageState extends State<WalletPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return const LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(255, 229, 140, 235),
-                                    Color.fromARGB(255, 33, 148, 146),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: const Text(
-                                'Explore',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 40,
-                                  color: Colors.white,
-                                ),
+                            Text(
+                              'Explore',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
                               ),
                             ),
                             Row(
                               children: [
-                                const Icon(
+                                Icon(
                                   Icons.account_balance_wallet,
-                                  color: Color.fromARGB(255, 150, 129, 212),
-                                  size: 30,
+                                  color: Color.fromARGB(255, 213, 204, 243),
+                                  size: 25,
                                 ),
-                                const SizedBox(width: 5),
+                                SizedBox(width: 5),
                                 Text.rich(
                                   TextSpan(
                                     children: [
                                       TextSpan(
                                         text: '5.2',
                                         style: TextStyle(
-                                          foreground: Paint()
-                                            ..shader = const LinearGradient(
-                                              colors: [
-                                                Color.fromARGB(255, 105, 255, 233),
-                                                Color.fromARGB(255, 38, 165, 211),
-                                              ],
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                            ).createShader(const Rect.fromLTWH(
-                                                0.0, 0.0, 200.0, 70.0)),
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
                                         ),
                                       ),
-                                      const TextSpan(
+                                      TextSpan(
                                         text: '  ',
                                       ),
                                       TextSpan(
                                         text: 'ETH',
                                         style: TextStyle(
-                                          foreground: Paint()
-                                            ..shader = const LinearGradient(
-                                              colors: [
-                                                Color.fromARGB(255, 255, 125, 166),
-                                                Color.fromARGB(255, 235, 101, 228),
-                                              ],
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                            ).createShader(const Rect.fromLTWH(
-                                                0.0, 0.0, 200.0, 70.0)),
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.white,
                                         ),
                                       ),
                                     ],
@@ -262,9 +211,8 @@ class _WalletPageState extends State<WalletPage> {
                           ],
                         ),
                         const SizedBox(height: 30),
-                        // Square Carousel with 5 transparent items and glass effect
                         SizedBox(
-                          height: 400,
+                          height: 450,
                           child: CarouselSlider(
                             options: CarouselOptions(
                               aspectRatio: 1.0,
@@ -282,24 +230,12 @@ class _WalletPageState extends State<WalletPage> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        ShaderMask(
-                          shaderCallback: (Rect bounds) {
-                            return const LinearGradient(
-                              colors: [
-                                Color.fromARGB(255, 229, 140, 235),
-                                Color.fromARGB(255, 33, 148, 146),
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ).createShader(bounds);
-                          },
-                          child: const Text(
-                            "Get Tickets",
-                            style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                        const Text(
+                          "Get Tickets",
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -332,7 +268,6 @@ class _WalletPageState extends State<WalletPage> {
                                           },
                                           style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(150, 144, 99, 240),
-                                            // Set your desired color here
                                           ),
                                           child: const Text(
                                             'Book Now : 2 ETH',
@@ -379,7 +314,7 @@ class _WalletPageState extends State<WalletPage> {
 
   Widget _buildBackgroundImage() {
     return Image.asset(
-      'lib/assets/Green iPhone 13 Wallpaper 1.png', // Replace 'your_image_path_here.jpg' with the actual image path
+      'lib/assets/bg2.png', 
       fit: BoxFit.cover,
       width: double.infinity,
       height: double.infinity,
@@ -462,21 +397,17 @@ class _ChatBotDialogState extends State<ChatBotDialog> {
   TextEditingController _textFieldController = TextEditingController();
   String botResponse = '';
 
-  // Define a map to store predefined responses for specific queries
+
   final Map<String, String> predefinedResponses = {
     'What is NFT': 'NFT means non-fungible tokens (NFTs), which are generally created using the same type of programming used for cryptocurrencies. In simple terms, these cryptographic assets are based on blockchain technology. They cannot be exchanged or traded equivalently like other cryptographic assets.',
     'What is blockchain': 'A blockchain is a decentralized, distributed and public digital ledger that is used to record transactions across many computers so that the record cannot be altered retroactively without the alteration of all subsequent blocks and the consensus of the network.',
-    // Add more predefined responses as needed
   };
 
   void _handleSubmission() {
-    // Process the user's input
     String userQuery = _textFieldController.text;
-    
-    // Look for predefined responses
+
     String response = predefinedResponses[userQuery] ?? 'I am not sure how to respond to that.';
 
-    // Update the botResponse state to display the response
     setState(() {
       botResponse = response;
     });
@@ -485,19 +416,19 @@ class _ChatBotDialogState extends State<ChatBotDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('How may I assist you?'),
+      title: const Text('How may I assist you?'),
       content: Column(
         children: [
           TextField(
             controller: _textFieldController,
-            decoration: InputDecoration(labelText: 'Your question or request'),
+            decoration: const InputDecoration(labelText: 'Your question or request'),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           if (botResponse.isNotEmpty)
             Text(
               'Bot: $botResponse',
               style: const TextStyle(
-                color: Colors.green,  // Adjust the color as needed
+                color: Colors.white, 
                 fontWeight: FontWeight.bold,
               ),
             ),

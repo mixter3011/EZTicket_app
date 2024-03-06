@@ -9,7 +9,7 @@ class WhyUs extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.push(
               context,
@@ -17,8 +17,8 @@ class WhyUs extends StatelessWidget {
             );
           },
         ),
-        title: Padding(
-          padding: const EdgeInsets.only(top: 15.0, left: 70),
+        title: const Padding(
+          padding: EdgeInsets.only(top: 15.0, left: 70),
           child: Text(
             'Why Us',
             style: TextStyle(fontSize: 35),
@@ -26,8 +26,8 @@ class WhyUs extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.only(top: 20.0, left: 15.0),
-        children: [
+        padding: const EdgeInsets.only(top: 20.0, left: 15.0),
+        children: const [
           Text(
             '✨ User-Centric: ',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

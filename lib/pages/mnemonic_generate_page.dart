@@ -28,31 +28,31 @@ class GenerateMnemonicPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: null, // Remove the app bar
+      appBar: null, 
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Background Image
+
           Image.asset(
-            'lib/assets/Green iPhone 13 Wallpaper 1.png', // Replace with the correct path to your image
+            'lib/assets/Green iPhone 13 Wallpaper 1.png', 
             fit: BoxFit.cover,
-            color: Colors.black.withOpacity(0.5), // Adjust the opacity as needed
-            colorBlendMode: BlendMode.darken, // Adjust the blend mode as needed
+            color: Colors.black.withOpacity(0.5), 
+            colorBlendMode: BlendMode.darken, 
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center, // Center align text horizontally
+              crossAxisAlignment: CrossAxisAlignment.center, 
               children: [
                 const Text(
                   'Please Store This Mnemonic Phrase Safely',
-                  textAlign: TextAlign.center, // Center align text vertically
+                  textAlign: TextAlign.center, 
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 22.0,
                     color: Colors.white,
-                    fontWeight: FontWeight.bold, // Make it bold
+                    fontWeight: FontWeight.bold, 
                   ),
                 ),
                 const SizedBox(height: 25.0),
@@ -65,12 +65,12 @@ class GenerateMnemonicPage extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1), // Semi-transparent background color
+                          color: Colors.white.withOpacity(0.1), 
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Text(
                           mnemonicWords[index],
-                          textAlign: TextAlign.center, // Center align text inside the bubble
+                          textAlign: TextAlign.center, 
                           style: const TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
@@ -89,11 +89,11 @@ class GenerateMnemonicPage extends StatelessWidget {
     textStyle: const TextStyle(fontSize: 20.0, color: Colors.white),
     elevation: 4,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15.0), // Adjust the corner radius as needed
-      side: const BorderSide(color: Colors.white), // Add this line to make the outline white
+      borderRadius: BorderRadius.circular(15.0), 
+      side: const BorderSide(color: Colors.white), 
     ),
-    primary: Colors.transparent, // Make the button transparent
-    onPrimary: Color.fromARGB(255, 255, 255, 255), // Color of the text when pressed
+    primary: Colors.transparent, 
+    onPrimary: Color.fromARGB(255, 255, 255, 255), 
   ),
 ),
               ],

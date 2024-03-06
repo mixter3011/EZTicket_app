@@ -14,50 +14,48 @@ class Payment extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 30.0), // Adjust padding for image position
+                  padding: const EdgeInsets.only(bottom: 30.0), 
                   child: Image.asset(
-                    'lib/assets/pic.png', // Replace with your image path
+                    'lib/assets/pic.png', 
                     width: 150.0,
                     height: 150.0,
                     fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(height: 10.0), // Add spacing between image and text fields
+                const SizedBox(height: 10.0), 
 
                 Column(
                   children: [
                     SizedBox(
-                      width: 250.0, // Adjust width as needed
+                      width: 250.0, 
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: '         Enter Security Code     ',
-                          hintStyle: TextStyle(color: Colors.blue[100]), // Lighter hint text color
+                          hintStyle: TextStyle(color: Colors.blue[100]), 
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
                         onChanged: (text) {
                           if (text.isNotEmpty) {
-                            // Hide hint text and obscure text
                           }
                         },
                         obscureText: true,
                       ),
                     ),
-                    const SizedBox(height: 50.0), // Add spacing between text field and button
+                    const SizedBox(height: 50.0), 
 
-                    // Added Pay button:
+                    
                     SizedBox(
-                      width: 250.0, // Adjust width as needed
+                      width: 250.0, 
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const Confirmation()),
                           );
-                          print('Pay button pressed!');
                         },
-                        child: Text('Pay 2 ETH'),
+                        child: const Text('Pay 2 ETH'),
                       ),
                     ),
                   ],
@@ -65,13 +63,12 @@ class Payment extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            top: 20.0, // Adjust top position as needed
-            right: 20.0, // Adjust right position as needed
+          const Positioned(
+            top: 20.0,             right: 20.0, 
             child: CircleAvatar(
-              radius: 30.0, // Adjust radius as needed
+              radius: 30.0, 
               backgroundImage: AssetImage(
-                  'lib/assets/profile_image.jpg'), // Replace with your PFP image path
+                  'lib/assets/profile_image.jpg'),
             ),
           ),
         ],

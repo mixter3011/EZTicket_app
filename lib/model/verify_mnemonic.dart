@@ -42,7 +42,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/assets/Green iPhone 13 Wallpaper 1.png'), // Replace with your image path
+            image: AssetImage('lib/assets/Green iPhone 13 Wallpaper 1.png'), 
             fit: BoxFit.cover,
           ),
         ),

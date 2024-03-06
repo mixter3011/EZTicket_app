@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class GlassBox extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final child;
   const GlassBox ({Key? key, required this.child}) : super(key: key);
 

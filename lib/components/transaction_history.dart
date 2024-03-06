@@ -30,13 +30,13 @@ class TransactionItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20.0), // Add some space between the address texts
+          const SizedBox(height: 20.0), 
           const Row(
             children: [
               Icon(Icons.arrow_forward),
             ],
           ),
-          const SizedBox(height: 20.0), // Add some space between the arrow and the next address
+          const SizedBox(height: 20.0),
           const Row(
             children: [
               Expanded(
@@ -48,7 +48,7 @@ class TransactionItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20.0), // Add some space between the second address and the amount text
+          const SizedBox(height: 20.0), 
           Row(
             children: [
               Expanded(
@@ -60,9 +60,9 @@ class TransactionItem extends StatelessWidget {
                       style: TextStyle(fontSize: 18),
                     ),
                     Image.asset(
-                      'lib/assets/eth.png', // replace with your image path
-                      height: 24, // adjust the height as needed
-                      width: 24, // adjust the width as needed
+                      'lib/assets/eth.png', 
+                      height: 24, 
+                      width: 24, 
                     ),
                     const Text(
                       ' 2.0',

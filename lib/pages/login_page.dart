@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10), // Adjust the height as needed
+                const SizedBox(height: 10), 
                 ColorFiltered(
                   colorFilter: ColorFilter.mode(
                     Colors.white.withOpacity(0.7),
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                const SizedBox(height: 120), // Adjust the height as needed
+                const SizedBox(height: 120), 
                 Padding(
                   padding: const EdgeInsets.all(12),
                   child: SlideAction(
